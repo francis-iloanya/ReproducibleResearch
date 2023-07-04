@@ -6,6 +6,9 @@ author: "Francis Iloanya"
 date: "4th July 2023"
 title: "Reproducible Research - Peer Assessment 1"
 ---
+
+
+
 ## Introduction
 
 This R Markdown file was created in accordance with the guidelines for the Reproducible Research course, Project 1. I will be answering five questions relating to fitbit activity data.  
@@ -51,7 +54,10 @@ To answer these, I will need to manipulate the data frame then construct a chart
 Total.Steps <-  activity.df %>%
                 group_by(date) %>%
                 summarise(steps = sum(steps), n=n())
+```
 
+
+```r
 plot1 <- hist(Total.Steps$steps / 1000, 
               breaks = 12, 
               xlab = "Number of Total Daily Steps (,000)",
@@ -63,7 +69,7 @@ plot1 <- hist(Total.Steps$steps / 1000,
               main = "Histogram of Total Daily Steps")
 ```
 
-![](PA1_template_files/figure-html/plot_create-1.png)<!-- -->
+![](Figs/unnamed-chunk-4-1.png)<!-- -->
 
 The histogram below answers Q1 and Q2. To answer Q3 I will simply show the summary table.
 
@@ -98,7 +104,10 @@ To address these questions I will need to again manipulate the data and then bui
 interval_mean <- activity.df %>% 
                  group_by(interval) %>%
                  summarise(interval_average = mean(steps, na.rm = TRUE), n = n())
+```
 
+
+```r
 plot2 <- plot(interval_mean$interval, interval_mean$interval_average, type = "l",
               main = "Time Series Plot of Average Steps Per 5 Minute Interval",
               xlab = "5-Minute Interval (hh:mm)",
@@ -107,7 +116,7 @@ plot2 <- plot(interval_mean$interval, interval_mean$interval_average, type = "l"
               lwd = 2)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](Figs/unnamed-chunk-7-1.png)<!-- -->
 
 The chart above addresses Q2. The following extract from the manipulated table addresses Q1
 
@@ -183,7 +192,10 @@ Now I will plot an updated histogram, following similar logic to the earlier que
 Total.Steps2 <-  fixed.df %>%
         group_by(date) %>%
         summarise(steps = sum(steps), n=n())
+```
 
+
+```r
 plot3 <- hist(Total.Steps2$steps / 1000, 
               breaks = 12, 
               xlab = "Number of Total Daily Steps (,000)",
@@ -195,7 +207,8 @@ plot3 <- hist(Total.Steps2$steps / 1000,
               main = "Histogram of Total Daily Steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](Figs/unnamed-chunk-12-1.png)<!-- -->
+
 
 ```r
 print(summary(Total.Steps2))
@@ -264,7 +277,7 @@ plot4 <- ggplot(week.summ, aes(x = interval, y= interval_average, col = DayType)
 print(plot4)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](Figs/unnamed-chunk-15-1.png)<!-- -->
 
 We can see from these two charts that step activity begins slightly later on weekends than it does on weekdays, which makes sense as weekdays are days people tend to get up early to go to work.
 

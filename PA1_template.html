@@ -398,9 +398,8 @@ steps taken per day</h4>
 construct a chart from the result</p>
 <pre class="r"><code>Total.Steps &lt;-  activity.df %&gt;%
                 group_by(date) %&gt;%
-                summarise(steps = sum(steps), n=n())
-
-plot1 &lt;- hist(Total.Steps$steps / 1000, 
+                summarise(steps = sum(steps), n=n())</code></pre>
+<pre class="r"><code>plot1 &lt;- hist(Total.Steps$steps / 1000, 
               breaks = 12, 
               xlab = &quot;Number of Total Daily Steps (,000)&quot;,
               ylab = &quot;Frequency of Days&quot;,
@@ -440,9 +439,8 @@ dataset, contains the maximum number of steps?</h4>
 and then build a plot from the resulting output.</p>
 <pre class="r"><code>interval_mean &lt;- activity.df %&gt;% 
                  group_by(interval) %&gt;%
-                 summarise(interval_average = mean(steps, na.rm = TRUE), n = n())
-
-plot2 &lt;- plot(interval_mean$interval, interval_mean$interval_average, type = &quot;l&quot;,
+                 summarise(interval_average = mean(steps, na.rm = TRUE), n = n())</code></pre>
+<pre class="r"><code>plot2 &lt;- plot(interval_mean$interval, interval_mean$interval_average, type = &quot;l&quot;,
               main = &quot;Time Series Plot of Average Steps Per 5 Minute Interval&quot;,
               xlab = &quot;5-Minute Interval (hh:mm)&quot;,
               ylab = &quot;Average Steps&quot;,
@@ -521,9 +519,8 @@ earlier question. First manipulating the df then plotting using base
 R.</p>
 <pre class="r"><code>Total.Steps2 &lt;-  fixed.df %&gt;%
         group_by(date) %&gt;%
-        summarise(steps = sum(steps), n=n())
-
-plot3 &lt;- hist(Total.Steps2$steps / 1000, 
+        summarise(steps = sum(steps), n=n())</code></pre>
+<pre class="r"><code>plot3 &lt;- hist(Total.Steps2$steps / 1000, 
               breaks = 12, 
               xlab = &quot;Number of Total Daily Steps (,000)&quot;,
               ylab = &quot;Frequency of Days&quot;,

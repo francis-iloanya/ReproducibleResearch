@@ -6,6 +6,11 @@ author: "Francis Iloanya"
 date: "4th July 2023"
 title: "Reproducible Research - Peer Assessment 1"
 ---
+
+```{r global_options, echo=FALSE}
+knitr::opts_chunk$set(fig.path='Figs/')
+```
+
 ## Introduction
 
 This R Markdown file was created in accordance with the guidelines for the Reproducible Research course, Project 1. I will be answering five questions relating to fitbit activity data.  
@@ -37,11 +42,13 @@ Now I will address each questions and their sub-questions.
 
 To answer these, I will need to manipulate the data frame then construct a chart from the result
 
-```{r plot_create}
+```{r}
 Total.Steps <-  activity.df %>%
                 group_by(date) %>%
                 summarise(steps = sum(steps), n=n())
+```
 
+```{r}
 plot1 <- hist(Total.Steps$steps / 1000, 
               breaks = 12, 
               xlab = "Number of Total Daily Steps (,000)",
@@ -73,7 +80,9 @@ To address these questions I will need to again manipulate the data and then bui
 interval_mean <- activity.df %>% 
                  group_by(interval) %>%
                  summarise(interval_average = mean(steps, na.rm = TRUE), n = n())
+```
 
+```{r}
 plot2 <- plot(interval_mean$interval, interval_mean$interval_average, type = "l",
               main = "Time Series Plot of Average Steps Per 5 Minute Interval",
               xlab = "5-Minute Interval (hh:mm)",
@@ -129,7 +138,9 @@ Now I will plot an updated histogram, following similar logic to the earlier que
 Total.Steps2 <-  fixed.df %>%
         group_by(date) %>%
         summarise(steps = sum(steps), n=n())
+```
 
+```{r}
 plot3 <- hist(Total.Steps2$steps / 1000, 
               breaks = 12, 
               xlab = "Number of Total Daily Steps (,000)",
@@ -139,6 +150,9 @@ plot3 <- hist(Total.Steps2$steps / 1000,
               col = "navy",
               border = "white",
               main = "Histogram of Total Daily Steps")
+```
+
+```{r}
 print(summary(Total.Steps2))
 ```
 
